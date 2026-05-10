@@ -2,7 +2,7 @@ name: Build PRIME APK
 
 on:
   push:
-    branches: [ master ] # اتأكد إن اسم الفرع عندك master زي ما باين في الصورة
+    branches: [ main ] # اتأكد إن اسم الفرع عندك master زي ما باين في الصورة
 
 jobs:
   build:
