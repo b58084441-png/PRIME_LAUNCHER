@@ -2,7 +2,8 @@ name: Build PRIME APK
 
 on:
   push:
-    branches: [ main ] # اتأكد إن اسم الفرع عندك master زي ما باين في الصورة
+    branches: [ main ]
+  workflow_dispatch: # السطر ده بيعملك زرار "تشغيل يدوي"
 
 jobs:
   build:
@@ -10,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: set up JDK 17
+      - name: set up JDK 11
         uses: actions/setup-java@v4
         with:
           java-version: '11'
@@ -21,10 +22,4 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build Debug APK
-        run: ./gradlew assembleDebug
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: PRIME-Mobile-Launcher
-          path: app/build/outputs/apk/debug/app-debug.apk
+        run: ./gradlew assembleDebug --stacktrace
